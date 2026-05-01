@@ -1,106 +1,185 @@
-import "./index.css";
+﻿import { useState } from 'react';
+import './index.css';
+
+const whatsappNumber = '2348163485829';
 
 function App() {
+  const [room, setRoom] = useState('Living Room');
+  const [mood, setMood] = useState('Luxury Contemporary');
+  const [items, setItems] = useState(['Sofa', 'Rug', 'Light', 'Art']);
+
+  const toggleItem = (item) => {
+    setItems((prev) =>
+      prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]
+    );
+  };
+
+  const sendWhatsApp = () => {
+  const message = encodeURIComponent(
+    "Hello Maison A+,\n\n" +
+    "I would like to start an interior design project.\n\n" +
+    "Room: " + room + "\n" +
+    "Mood: " + mood + "\n" +
+    "Selected Elements: " + items.join(", ")
+  );
+
+  window.open("https://wa.me/" + whatsappNumber + "?text=" + message, "_blank");
+};
+
   return (
-    <main className="page">
-      <section className="hero">
-        <div>
-          <p className="eyebrow">Maison A+</p>
-          <h1>Your Space. Your Story. Our Expertise.</h1>
-          <p>
-            Luxury interior design, space planning, 3D design, lighting
-            selection, mood boards, project management, and functional spaces
-            designed beautifully.
-          </p>
-
-          <div className="buttons">
-            <a href="#contact" className="btn gold">Book Consultation</a>
-            <a href="#studio" className="btn outline">Try Design Studio</a>
-          </div>
+    <main>
+      <nav className="nav">
+        <div className="logo">Maison A+</div>
+        <div className="nav-links">
+        <a href="#studio">Studio</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
         </div>
+        <button onClick={sendWhatsApp}>Book Consultation</button>
+      </nav>
 
-        <div className="hero-card">
-          <h2>Where Creativity Meets Functionality</h2>
-          <p>Homes · Offices · Short-lets · Hospitality · Retail Spaces</p>
-        </div>
-      </section>
-
-      <section id="studio" className="section">
-        <h2>Interactive Design Studio</h2>
-        <p>
-          This section will let clients experiment with room style, furniture,
-          colour palettes, lighting, and décor elements.
+        <section className="hero">
+        <div className="hero-content">
+        <p className="eyebrow">Luxury Interior Design · Lagos</p>
+        <h1>Designing spaces that feel luxurious, functional, and deeply personal.</h1>
+        <p className="hero-text">
+        Maison A+ creates homes, offices, short-let apartments, and hospitality spaces
+        with refined styling, smart space planning, lighting, 3D design, and project management.
         </p>
-
-        <div className="studio-box">
-          <div className="room">
-            <div className="sofa">Sofa</div>
-            <div className="rug">Rug</div>
-            <div className="plant">Plant</div>
-          </div>
+        <div className="hero-actions">
+        <button onClick={sendWhatsApp} className="gold-btn">Start Your Project</button>
+        <a href="#studio" className="ghost-btn">Try Design Studio</a>
         </div>
-      </section>
-
-      <section className="section dark">
-        <h2>Lead Funnel</h2>
-        <p>Capture client project type, budget, timeline, style, and contact details.</p>
-
-        <form className="form">
-          <input placeholder="Full Name" />
-          <input placeholder="Phone / WhatsApp" />
-          <input placeholder="Email Address" />
-          <select>
-            <option>Residential Project</option>
-            <option>Commercial Project</option>
-            <option>Short-let / Airbnb</option>
-            <option>Hospitality / Retail</option>
-          </select>
-          <textarea placeholder="Tell us about your project"></textarea>
-            <button
-                type="button"
-                onClick={() => {
-                    const name = document.querySelector('input[placeholder=\"Full Name\"]').value;
-                    const phone = document.querySelector('input[placeholder=\"Phone / WhatsApp\"]').value;
-                    const email = document.querySelector('input[placeholder=\"Email Address\"]').value;
-                    const project = document.querySelector('select').value;
-                    const details = document.querySelector('textarea').value;
-
-                    const message = `Hello Maison A+,%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AProject Type: ${project}%0A%0ADetails:%0A${details}`;
-
-                    window.open(`https://wa.me/2349129609443?text=${message}`, '_blank');
-                }}
-                >
-                Request Consultation
-          </button>
-        </form>
-      </section>
-
-      <section className="section">
-        <h2>Project Gallery</h2>
-        <div className="gallery">
-          <div>Living Room</div>
-          <div>Office</div>
-          <div>Kitchen</div>
-          <div>Bedroom</div>
         </div>
-      </section>
 
-      <section className="section">
-        <h2>Client Reviews</h2>
-        <blockquote>
-          “Maison A+ turned our space into something elegant, practical, and unforgettable.”
-        </blockquote>
-      </section>
+        <div className="hero-showcase">
+        <div className="image-card large"></div>
+        <div className="image-card small top">3D Concepts</div>
+        <div className="image-card small bottom">Space Planning</div>
+        </div>
+        </section>
 
-      <section id="contact" className="section contact">
-        <h2>Contact Maison A+</h2>
+        <section className="trust-strip">
+        <span>3D Design</span>
+        <span>Lighting Selection</span>
+        <span>Mood Boards</span>
+        <span>Project Management</span>
+        <span>Custom Styling</span>
+        </section>
+
+        <section id="studio" className="studio">
+        <div className="section-head">
+        <p className="eyebrow">Interactive Studio</p>
+        <h2>Experiment with your desired space.</h2>
+        <p>Choose a room, select a mood, add decor elements, then send your concept to Maison A+.</p>
+        </div>
+
+        <div className="studio-layout">
+        <div className="studio-panel">
+        <label>Room Type</label>
+        <select value={room} onChange={(e) => setRoom(e.target.value)}>
+        <option>Living Room</option>
+        <option>Bedroom</option>
+        <option>Kitchen</option>
+        <option>Office</option>
+        <option>Reception</option>
+        <option>Short-let Apartment</option>
+        </select>
+
+        <label>Design Mood</label>
+        <select value={mood} onChange={(e) => setMood(e.target.value)}>
+        <option>Luxury Contemporary</option>
+        <option>Warm Minimal</option>
+        <option>Corporate Luxe</option>
+        <option>Modern Classic</option>
+        </select>
+
+        <label>Decor Elements</label>
+        <div className="chips">
+        {['Sofa', 'Rug', 'Light', 'Art', 'Plant', 'Desk'].map((item) => (
+        <button
+        key={item}
+        onClick={() => toggleItem(item)}
+        className={items.includes(item) ? 'chip active' : 'chip'}
+        >
+        {item}
+        </button>
+        ))}
+        </div>
+
+        <button onClick={sendWhatsApp} className="full-btn">Send My Concept</button>
+        </div>
+
+        <div className="room-stage">
+        <div className="room-label">
+        <strong>{room}</strong>
+        <span>{mood}</span>
+        </div>
+
+        {items.includes('Light') && <div className="decor light">Pendant Light</div>}
+        {items.includes('Art') && <div className="decor art">Feature Art</div>}
+        {items.includes('Sofa') && <div className="decor sofa">Curved Sofa</div>}
+        {items.includes('Rug') && <div className="decor rug">Textured Rug</div>}
+        {items.includes('Plant') && <div className="decor plant">Plant</div>}
+        {items.includes('Desk') && <div className="decor desk">Desk</div>}
+
+        <div className="floor-glow"></div>
+        </div>
+        </div>
+        </section>
+
+        <section id="portfolio" className="portfolio">
+        <div className="section-head">
+        <p className="eyebrow">Portfolio</p>
+        <h2>Spaces designed to impress and function beautifully.</h2>
+        </div>
+
+        <div className="portfolio-grid">
+        <div className="project p1"><span>Luxury Living Room</span></div>
+        <div className="project p2"><span>Modern Office</span></div>
+        <div className="project p3"><span>Elegant Kitchen</span></div>
+        <div className="project p4"><span>Short-let Styling</span></div>
+        </div>
+        </section>
+
+        <section id="process" className="process">
+        <div className="section-head light">
+        <p className="eyebrow">Our Process</p>
+        <h2>From idea to elegant execution.</h2>
+        </div>
+
+        <div className="steps">
+        {['Discovery', 'Mood Board', '3D Design', 'Quotation', 'Execution'].map((step, index) => (
+        <div className="step" key={step}>
+        <span>{index + 1}</span>
+        <h3>{step}</h3>
+        <p>Clear, guided, and transparent from the first conversation to final reveal.</p>
+        </div>
+        ))}
+        </div>
+        </section>
+
+        <section className="reviews">
+        <h2>Client Experience</h2>
+        <div className="review-card">
+        Maison A+ transformed our space into something elegant practical and unforgettable.
+        </div>
+        </section>
+
+        <section id="contact" className="contact">
+        <div>
+        <p className="eyebrow">Contact</p>
+        <h2>Ready to love your space?</h2>
         <p>Phone / WhatsApp: +234 816 348 5829</p>
         <p>Email: Akiri.akel@outlook.com</p>
         <p>Location: 9 Tosin Agbet Street, Lagos, Nigeria</p>
         <p>Instagram / TikTok: @MaisonAPlus</p>
-      </section>
-    </main>
-  );
-}
+        </div>
+        <button onClick={sendWhatsApp} className="gold-btn">WhatsApp Maison A+</button>
+        </section>
+        </main>
+        );
+        }
 
-export default App;
+        export default App;
