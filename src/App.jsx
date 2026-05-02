@@ -2,7 +2,28 @@
 import './index.css';
 import { supabase } from "./supabase";
 const whatsappNumber = '2348163485829';
+const optionDescriptions = {
+  "Living Room": "A welcoming social space for relaxing, entertaining guests, and expressing your personal taste.",
+  "Bedroom": "A calm private retreat focused on comfort, storage, softness, lighting, and restful luxury.",
+  "Kitchen": "A functional cooking and gathering space designed around workflow, storage, durability, and beauty.",
+  "Office": "A productive professional space that improves focus, client perception, comfort, and brand confidence.",
+  "Reception": "A first-impression space designed to communicate trust, professionalism, and premium brand value.",
+  "Short-let Apartment": "A guest-focused space designed to photograph beautifully, improve bookings, and feel memorable.",
 
+  "Luxury Contemporary": "Refined, polished, and elegant with premium finishes, statement pieces, and layered lighting.",
+  "Warm Minimal": "Clean and uncluttered, but still soft, welcoming, practical, and comfortable for daily living.",
+  "Corporate Luxe": "Professional, structured, and impressive with executive finishes and smart functional planning.",
+  "Modern Classic": "A timeless blend of classic elegance and modern comfort for a sophisticated, lasting interior.",
+
+  "₦500k–₦2m": "Best for focused refreshes, styling, selected furniture, lighting updates, and smaller transformation areas.",
+  "₦2m–₦8m": "Ideal for full room transformations, custom furniture, richer materials, and stronger design impact.",
+  "₦8m+ turnkey luxury": "Best for full-service luxury execution, premium finishes, custom works, procurement, and installation.",
+
+  "Elegant family living": "A beautiful but practical home environment that supports children, guests, storage, and daily comfort.",
+  "Client-facing professionalism": "A polished business environment that helps clients trust your brand from the moment they enter.",
+  "Premium guest experience": "A memorable short-let or hospitality experience designed for comfort, photos, reviews, and repeat bookings.",
+  "Calm personal retreat": "A quiet, relaxing environment with soft textures, soothing colours, and thoughtful lighting."
+};
 function App() {
   const [room, setRoom] = useState('Living Room');
   const [mood, setMood] = useState('Luxury Contemporary');
@@ -14,6 +35,10 @@ function App() {
     project: "Residential",
     message: "",
   });
+  const [studioStep, setStudioStep] = useState(1);
+  const [budget, setBudget] = useState("₦500k–₦2m");
+  const [lifestyle, setLifestyle] = useState("Elegant family living");
+  
   const toggleItem = (item) => {
     setItems((prev) =>
       prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]
@@ -46,6 +71,8 @@ function App() {
       "Project: " + lead.project + "\n" +
       "Room: " + room + "\n" +
       "Mood: " + mood + "\n" +
+      "Budget: " + budget + "\n" +
+      "Lifestyle: " + lifestyle + "\n" +
       "Selected Elements: " + items.join(", ") + "\n\n" +
       "Message: " + lead.message
   );
@@ -119,64 +146,142 @@ function App() {
 
         <section id="studio" className="studio">
         <div className="section-head">
-        <p className="eyebrow">Interactive Studio</p>
-        <h2>Experiment with your desired space.</h2>
-        <p>Choose a room, select a mood, add decor elements, then send your concept to Maison A+.</p>
+          <p className="eyebrow">Design Studio</p>
+          <h2>Design your space in 60 seconds.</h2>
+          <p>
+            Answer a few visual questions and Maison A+ will shape your concept
+            direction around your room, lifestyle, investment range, and design mood.
+          </p>
+        </div>
+
+        <div className="studio-progress">
+          <div style={{ width: `${studioStep * 25}%` }}></div>
         </div>
 
         <div className="studio-layout">
-        <div className="studio-panel">
-        <label>Room Type</label>
-        <select value={room} onChange={(e) => setRoom(e.target.value)}>
-        <option>Living Room</option>
-        <option>Bedroom</option>
-        <option>Kitchen</option>
-        <option>Office</option>
-        <option>Reception</option>
-        <option>Short-let Apartment</option>
-        </select>
+          <div className="studio-panel">
+            <p className="step-label">Step {studioStep} of 4</p>
 
-        <label>Design Mood</label>
-        <select value={mood} onChange={(e) => setMood(e.target.value)}>
-        <option>Luxury Contemporary</option>
-        <option>Warm Minimal</option>
-        <option>Corporate Luxe</option>
-        <option>Modern Classic</option>
-        </select>
+            {studioStep === 1 && (
+              <>
+                <h3>What space are we transforming?</h3>
+                <div className="option-grid">
+                  {["Living Room", "Bedroom", "Kitchen", "Office", "Reception", "Short-let Apartment"].map((x) => (
+                    <button
+                      key={x}
+                      onClick={() => setRoom(x)}
+                      className={room === x ? "option active" : "option"}
+                    >
+                      <strong>{x}</strong>
+                      <span>{optionDescriptions[x]}</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
 
-        <label>Decor Elements</label>
-        <div className="chips">
-        {['Sofa', 'Rug', 'Light', 'Art', 'Plant', 'Desk'].map((item) => (
-        <button
-        key={item}
-        onClick={() => toggleItem(item)}
-        className={items.includes(item) ? 'chip active' : 'chip'}
-        >
-        {item}
-        </button>
-        ))}
+            {studioStep === 2 && (
+              <>
+                <h3>What feeling should the space create?</h3>
+                <div className="option-grid">
+                  {["Luxury Contemporary", "Warm Minimal", "Corporate Luxe", "Modern Classic"].map((x) => (
+                    <button
+                      key={x}
+                      onClick={() => setMood(x)}
+                      className={mood === x ? "option active" : "option"}
+                    >
+                      <strong>{x}</strong>
+                      <span>{optionDescriptions[x]}</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {studioStep === 3 && (
+              <>
+                <h3>What is your investment range?</h3>
+                <div className="option-grid">
+                  {["₦500k–₦2m", "₦2m–₦8m", "₦8m+ turnkey luxury"].map((x) => (
+                    <button
+                      key={x}
+                      onClick={() => setBudget(x)}
+                      className={budget === x ? "option active" : "option"}
+                    >
+                      <strong>{x}</strong>
+                      <span>{optionDescriptions[x]}</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {studioStep === 4 && (
+              <>
+                <h3>What lifestyle should the design support?</h3>
+                <div className="option-grid">
+                  {["Elegant family living", "Client-facing professionalism", "Premium guest experience", "Calm personal retreat"].map((x) => (
+                    <button
+                      key={x}
+                      onClick={() => setLifestyle(x)}
+                      className={lifestyle === x ? "option active" : "option"}
+                    >
+                      <strong>{x}</strong>
+                      <span>{optionDescriptions[x]}</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+
+            <div className="studio-nav">
+              <button
+                disabled={studioStep === 1}
+                onClick={() => setStudioStep(studioStep - 1)}
+              >
+                Back
+              </button>
+
+              {studioStep < 4 ? (
+                <button onClick={() => setStudioStep(studioStep + 1)}>
+                  Next
+                </button>
+              ) : (
+                <button onClick={sendWhatsApp} className="gold-btn">
+                  Send My Concept
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="room-stage">
+            <div className="room-label">
+              <strong>{room}</strong>
+              <span>{mood}</span>
+            </div>
+
+            <div className="concept-card">
+              <span>Your Maison A+ Concept</span>
+              <h3>
+                {mood} for {lifestyle}
+              </h3>
+              <p>
+                Recommended direction: layered lighting, smart space planning,
+                premium textures, and functional elegance within {budget}.
+              </p>
+            </div>
+
+            {items.includes("Light") && <div className="decor light">Pendant Light</div>}
+            {items.includes("Art") && <div className="decor art">Feature Art</div>}
+            {items.includes("Sofa") && <div className="decor sofa">Curved Sofa</div>}
+            {items.includes("Rug") && <div className="decor rug">Textured Rug</div>}
+            {items.includes("Plant") && <div className="decor plant">Plant</div>}
+            {items.includes("Desk") && <div className="decor desk">Desk</div>}
+
+            <div className="floor-glow"></div>
+          </div>
         </div>
-
-        <button onClick={sendWhatsApp} className="full-btn">Send My Concept</button>
-        </div>
-
-        <div className="room-stage">
-        <div className="room-label">
-        <strong>{room}</strong>
-        <span>{mood}</span>
-        </div>
-
-        {items.includes('Light') && <div className="decor light">Pendant Light</div>}
-        {items.includes('Art') && <div className="decor art">Feature Art</div>}
-        {items.includes('Sofa') && <div className="decor sofa">Curved Sofa</div>}
-        {items.includes('Rug') && <div className="decor rug">Textured Rug</div>}
-        {items.includes('Plant') && <div className="decor plant">Plant</div>}
-        {items.includes('Desk') && <div className="decor desk">Desk</div>}
-
-        <div className="floor-glow"></div>
-        </div>
-        </div>
-        </section>
+      </section>
 
         <section id="portfolio" className="portfolio">
         <div className="section-head">

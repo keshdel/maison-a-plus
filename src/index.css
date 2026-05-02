@@ -583,3 +583,121 @@ button:hover,
   right: 0;
   bottom: 90px;
 }
+.studio-progress {
+  width: 100%;
+  height: 12px;
+  background: rgba(43,43,43,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.studio-progress div {
+  height: 100%;
+  background: linear-gradient(135deg, #d8b76e, #a77d32);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+.step-label {
+  color: #1d7d85;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.option-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.option {
+  text-align: left;
+  padding: 15px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(43,43,43,0.12);
+  background: rgba(255,255,255,0.72);
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.option:hover,
+.option.active {
+  background: #2b2b2b;
+  color: #f8f7f3;
+  transform: translateX(4px);
+}
+
+.studio-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.studio-nav button {
+  border: none;
+  padding: 13px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.studio-nav button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.concept-card {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: min(360px, calc(100% - 60px));
+  background: rgba(43,43,43,0.82);
+  color: #f8f7f3;
+  border: 1px solid rgba(198,161,91,0.35);
+  border-radius: 28px;
+  padding: 24px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.22);
+  z-index: 5;
+}
+
+.concept-card span {
+  color: #c6a15b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+.concept-card h3 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  line-height: 1.05;
+  margin: 12px 0;
+}
+
+.concept-card p {
+  color: rgba(248,247,243,0.72);
+  line-height: 1.6;
+}
+.option {
+  display: grid;
+  gap: 6px;
+}
+
+.option strong {
+  font-size: 16px;
+}
+
+.option span {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(43,43,43,0.62);
+}
+
+.option.active span,
+.option:hover span {
+  color: rgba(248,247,243,0.72);
+}
