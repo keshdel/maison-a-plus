@@ -442,6 +442,63 @@ function App() {
             <span>Client Stories</span>
           </div>
         </section>
+        <section className="value-section">
+          <div className="section-head">
+            <p className="eyebrow">Why It Matters</p>
+            <h2>Beautiful design should also create measurable value.</h2>
+            <p>
+              Maison A+ helps clients turn interiors into assets — improving comfort,
+              perception, productivity, and earning potential.
+            </p>
+          </div>
+
+          <div className="value-grid">
+            <div className="value-card">
+              <span>For Young Families</span>
+              <h3>Comfort that supports daily life.</h3>
+              <p>
+                We design spaces that feel elegant but still practical for children,
+                guests, storage, relaxation, and everyday routines.
+              </p>
+            </div>
+
+            <div className="value-card featured">
+              <span>For Business Professionals</span>
+              <h3>Your space becomes your silent introduction.</h3>
+              <p>
+                A refined home or office communicates confidence, taste, structure,
+                and success before you even say a word.
+              </p>
+            </div>
+
+            <div className="value-card">
+              <span>For Businesses</span>
+              <h3>Better spaces improve trust and productivity.</h3>
+              <p>
+                Reception areas, offices, meeting rooms, and workspaces can strengthen
+                brand perception and improve how people work.
+              </p>
+            </div>
+
+            <div className="value-card">
+              <span>For Short-let Owners</span>
+              <h3>Design that improves booking appeal.</h3>
+              <p>
+                Guests choose what photographs well. We style spaces to look premium,
+                memorable, and review-worthy.
+              </p>
+            </div>
+          </div>
+
+          <div className="value-cta">
+            <h3>Not sure what your space needs?</h3>
+            <p>
+              Start with a Maison A+ concept request and we’ll help you define the
+              best design direction for your goals and budget.
+            </p>
+            <a href="#studio" className="gold-btn">Create My Concept</a>
+          </div>
+        </section>
         <section id="process" className="process">
         <div className="section-head light">
         <p className="eyebrow">Our Process</p>
