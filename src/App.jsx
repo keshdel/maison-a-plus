@@ -335,19 +335,113 @@ function App() {
         </div>
       </section>        
         <section id="portfolio" className="portfolio">
-        <div className="section-head">
-        <p className="eyebrow">Portfolio</p>
-        <h2>Spaces designed to impress and function beautifully.</h2>
-        </div>
+          <div className="section-head">
+            <p className="eyebrow">Portfolio</p>
+            <h2>Spaces designed to impress and perform.</h2>
+            <p>
+              Every Maison A+ project combines beauty with function — improving how
+              spaces feel, work, and are experienced daily.
+            </p>
+          </div>
 
-        <div className="portfolio-grid">
-        <div className="project p1"><span>Luxury Living Room</span></div>
-        <div className="project p2"><span>Modern Office</span></div>
-        <div className="project p3"><span>Elegant Kitchen</span></div>
-        <div className="project p4"><span>Short-let Styling</span></div>
-        </div>
+          <div className="portfolio-grid">
+
+            <div className="project p1">
+              <div className="project-info">
+                <span>Luxury Living Room</span>
+                <p>
+                  Transformed a standard living area into a warm, elegant social space
+                  with layered lighting, premium textures, and optimized layout.
+                </p>
+                <small>Result: Better comfort + stronger guest impression</small>
+              </div>
+            </div>
+
+            <div className="project p2">
+              <div className="project-info">
+                <span>Modern Office</span>
+                <p>
+                  Designed a reception and workspace that reflects professionalism and
+                  improves client confidence from first contact.
+                </p>
+                <small>Result: Improved brand perception</small>
+              </div>
+            </div>
+
+            <div className="project p3">
+              <div className="project-info">
+                <span>Elegant Kitchen</span>
+                <p>
+                  Reworked layout and storage to improve functionality while maintaining
+                  a clean, premium aesthetic.
+                </p>
+                <small>Result: Better workflow + usability</small>
+              </div>
+            </div>
+
+            <div className="project p4">
+              <div className="project-info">
+                <span>Short-let Apartment</span>
+                <p>
+                  Styled for photography and guest experience to increase bookings and
+                  repeat visits.
+                </p>
+                <small>Result: Higher rental value</small>
+              </div>
+            </div>
+
+          </div>
         </section>
+        <section className="social-proof">
+          <div className="section-head">
+            <p className="eyebrow">Social Proof</p>
+            <h2>Designed to be seen, shared, and remembered.</h2>
+            <p>
+              Maison A+ creates spaces that clients are proud to show — from family
+              homes to premium offices and short-let apartments.
+            </p>
+          </div>
 
+          <div className="proof-grid">
+            <div className="testimonial-main">
+              <div className="stars">★★★★★</div>
+              <h3>
+                “Maison A+ transformed our space into something elegant, practical,
+                and unforgettable.”
+              </h3>
+              <p>— Residential Client, Lagos</p>
+            </div>
+
+            <div className="proof-card video-card">
+              <div className="play-circle">▶</div>
+              <span>Client Reveal Video</span>
+              <p>Perfect for short reels, walkthroughs, and transformation clips.</p>
+            </div>
+
+            <div className="proof-card">
+              <strong>WhatsApp Reviews</strong>
+              <p>
+                Add real client feedback screenshots here, with private details blurred.
+              </p>
+            </div>
+
+            <div className="proof-card">
+              <strong>Instagram / TikTok Ready</strong>
+              <p>
+                Showcase completed projects, behind-the-scenes clips, styling tips,
+                and before/after reveals.
+              </p>
+            </div>
+          </div>
+
+          <div className="social-strip">
+            <span>@MaisonAPlus</span>
+            <span>Project Reveals</span>
+            <span>Before / After</span>
+            <span>Design Tips</span>
+            <span>Client Stories</span>
+          </div>
+        </section>
         <section id="process" className="process">
         <div className="section-head light">
         <p className="eyebrow">Our Process</p>
