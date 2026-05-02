@@ -506,3 +506,21 @@ button:hover,
     grid-template-columns: 1fr;
   }
 }
+.lead-form {
+  display: grid;
+  gap: 12px;
+  width: min(520px, 100%);
+}
+
+.lead-form input,
+.lead-form select,
+.lead-form textarea {
+  padding: 15px;
+  border-radius: 16px;
+  border: 1px solid rgba(43,43,43,0.15);
+  background: rgba(255,255,255,0.8);
+}
+
+.lead-form textarea {
+  min-height: 120px;
+}

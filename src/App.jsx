@@ -1,30 +1,57 @@
 ﻿import { useState } from 'react';
 import './index.css';
-
+import { supabase } from "./supabase";
 const whatsappNumber = '2348163485829';
 
 function App() {
   const [room, setRoom] = useState('Living Room');
   const [mood, setMood] = useState('Luxury Contemporary');
   const [items, setItems] = useState(['Sofa', 'Rug', 'Light', 'Art']);
-
+  const [lead, setLead] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    project: "Residential",
+    message: "",
+  });
   const toggleItem = (item) => {
     setItems((prev) =>
       prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]
     );
   };
 
-  const sendWhatsApp = () => {
+ const sendWhatsApp = async () => {
+  await supabase.from("leads").insert([
+    {
+      name: lead.name,
+      phone: lead.phone,
+      email: lead.email,
+      project: lead.project,
+      message:
+        lead.message +
+        "\n\nRoom: " +
+        room +
+        "\nMood: " +
+        mood +
+        "\nSelected Elements: " +
+        items.join(", "),
+    },
+  ]);
+
   const message = encodeURIComponent(
     "Hello Maison A+,\n\n" +
-    "I would like to start an interior design project.\n\n" +
-    "Room: " + room + "\n" +
-    "Mood: " + mood + "\n" +
-    "Selected Elements: " + items.join(", ")
+      "Name: " + lead.name + "\n" +
+      "Phone: " + lead.phone + "\n" +
+      "Email: " + lead.email + "\n" +
+      "Project: " + lead.project + "\n" +
+      "Room: " + room + "\n" +
+      "Mood: " + mood + "\n" +
+      "Selected Elements: " + items.join(", ") + "\n\n" +
+      "Message: " + lead.message
   );
 
-  window.open("https://wa.me/" + whatsappNumber + "?text=" + message, "_blank");
-};
+  window.open("https://wa.me/2349129609443?text=" + message, "_blank");
+}
 
   return (
     <main>
@@ -166,7 +193,23 @@ function App() {
         Maison A+ transformed our space into something elegant practical and unforgettable.
         </div>
         </section>
-
+        
+        <section id="lead-form" className="lead-form">
+        <div className="lead-form">
+          <input placeholder="Full Name" value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} />
+          <input placeholder="Phone / WhatsApp" value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} />
+          <input placeholder="Email Address" value={lead.email} onChange={(e) => setLead({ ...lead, email: e.target.value })} />
+          <select value={lead.project} onChange={(e) => setLead({ ...lead, project: e.target.value })}>
+            <option>Residential</option>
+            <option>Commercial</option>
+            <option>Short-let / Airbnb</option>
+            <option>Hospitality</option>
+            <option>Retail</option>
+          </select>
+          <textarea placeholder="Tell us about your project" value={lead.message} onChange={(e) => setLead({ ...lead, message: e.target.value })}></textarea>
+        </div>
+        </section>
+       
         <section id="contact" className="contact">
         <div>
         <p className="eyebrow">Contact</p>
