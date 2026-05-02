@@ -67,24 +67,46 @@ function App() {
       </nav>
 
         <section className="hero">
-        <div className="hero-content">
-        <p className="eyebrow">Luxury Interior Design · Lagos</p>
-        <h1>Designing spaces that feel luxurious, functional, and deeply personal.</h1>
-        <p className="hero-text">
-        Maison A+ creates homes, offices, short-let apartments, and hospitality spaces
-        with refined styling, smart space planning, lighting, 3D design, and project management.
-        </p>
-        <div className="hero-actions">
-        <button onClick={sendWhatsApp} className="gold-btn">Start Your Project</button>
-        <a href="#studio" className="ghost-btn">Try Design Studio</a>
-        </div>
-        </div>
+          <div className="hero-content">
+            <p className="eyebrow">Maison A+ Luxury Interior Design</p>
 
-        <div className="hero-showcase">
-        <div className="image-card large"></div>
-        <div className="image-card small top">3D Concepts</div>
-        <div className="image-card small bottom">Space Planning</div>
-        </div>
+            <h1>What does your space say about you?</h1>
+
+            <p className="hero-text">
+              Whether you want a refined family home, a high-performing office,
+              or a short-let that attracts premium guests, Maison A+ designs
+              spaces that feel luxurious, functional, and unforgettable.
+            </p>
+
+            <div className="path-selector">
+              <button onClick={() => setRoom("Living Room")}>I want a luxury home</button>
+              <button onClick={() => setRoom("Office")}>I want a better office</button>
+              <button onClick={() => setRoom("Short-let Apartment")}>I want a profitable short-let</button>
+            </div>
+
+            <div className="hero-actions">
+              <button onClick={sendWhatsApp} className="gold-btn">
+                Get My Space Concept
+              </button>
+              <a href="#studio" className="ghost-btn">
+                Try Design Studio
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-showcase">
+            <div className="image-card large"></div>
+
+            <div className="luxury-note top-note">
+              <span>Selected Space</span>
+              <strong>{room}</strong>
+            </div>
+
+            <div className="luxury-note bottom-note">
+              <span>Maison A+ Promise</span>
+              <strong>Beauty + Functionality</strong>
+            </div>
+          </div>
         </section>
 
         <section className="trust-strip">
