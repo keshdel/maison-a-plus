@@ -38,7 +38,7 @@ function App() {
   const [studioStep, setStudioStep] = useState(1);
   const [budget, setBudget] = useState("₦500k–₦2m");
   const [lifestyle, setLifestyle] = useState("Elegant family living");
-  
+  const [afterView, setAfterView] = useState(true);
   const toggleItem = (item) => {
     setItems((prev) =>
       prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]
@@ -283,6 +283,57 @@ function App() {
         </div>
       </section>
 
+      <section className="transformation">
+        <div className="section-head">
+          <p className="eyebrow">Before / After</p>
+          <h2>See how thoughtful design changes everything.</h2>
+          <p>
+            A Maison A+ transformation is not just about decoration. It is about
+            better flow, stronger first impressions, improved comfort, and spaces
+            that feel valuable.
+          </p>
+        </div>
+
+        <div className="transform-layout">
+          <div className={afterView ? "transform-card after" : "transform-card before"}>
+            <div className="transform-overlay">
+              <span>{afterView ? "After Maison A+" : "Before Maison A+"}</span>
+              <h3>
+                {afterView
+                  ? "Layered lighting, premium textures, functional layout."
+                  : "Unused corners, weak lighting, unclear style direction."}
+              </h3>
+            </div>
+          </div>
+
+          <div className="transform-panel">
+            <h3>Transformation Preview</h3>
+            <p>
+              Toggle between before and after to understand how strategic design
+              upgrades perception, usability, and emotional value.
+            </p>
+
+            <button onClick={() => setAfterView(!afterView)} className="gold-btn">
+              Show {afterView ? "Before" : "After"}
+            </button>
+
+            <div className="impact-list">
+              <div>
+                <strong>+ Better flow</strong>
+                <span>Space planning makes movement easier.</span>
+              </div>
+              <div>
+                <strong>+ Higher perceived value</strong>
+                <span>Premium finishes improve first impression.</span>
+              </div>
+              <div>
+                <strong>+ More comfort</strong>
+                <span>Lighting, furniture, and layout support daily use.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>        
         <section id="portfolio" className="portfolio">
         <div className="section-head">
         <p className="eyebrow">Portfolio</p>

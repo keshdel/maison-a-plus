@@ -701,3 +701,122 @@ button:hover,
 .option:hover span {
   color: rgba(248,247,243,0.72);
 }
+.transformation {
+  padding: 90px 70px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(29,125,133,0.12), transparent 30%),
+    #f8f7f3;
+}
+
+.transform-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.transform-card {
+  min-height: 560px;
+  border-radius: 42px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+  background-size: cover;
+  background-position: center;
+  transition: 0.5s ease;
+}
+
+.transform-card.before {
+  background-image:
+    linear-gradient(to top, rgba(0,0,0,0.72), transparent 60%),
+    url("https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1200&q=80");
+  filter: saturate(0.75);
+}
+
+.transform-card.after {
+  background-image:
+    linear-gradient(to top, rgba(0,0,0,0.72), transparent 60%),
+    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80");
+}
+
+.transform-overlay {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  bottom: 34px;
+  color: white;
+}
+
+.transform-overlay span {
+  color: #c6a15b;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.transform-overlay h3 {
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 4vw, 54px);
+  max-width: 720px;
+  line-height: 1;
+}
+
+.transform-panel {
+  background: #2b2b2b;
+  color: #f8f7f3;
+  border-radius: 42px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.14);
+}
+
+.transform-panel h3 {
+  font-family: Georgia, serif;
+  font-size: 38px;
+  margin: 0 0 12px;
+}
+
+.transform-panel p {
+  color: rgba(248,247,243,0.68);
+  line-height: 1.7;
+}
+
+.impact-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.impact-list div {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(198,161,91,0.25);
+}
+
+.impact-list strong {
+  display: block;
+  color: #c6a15b;
+  margin-bottom: 6px;
+}
+
+.impact-list span {
+  color: rgba(248,247,243,0.65);
+}
+
+@media (max-width: 900px) {
+  .transformation {
+    padding: 45px 24px;
+  }
+
+  .transform-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .transform-card {
+    min-height: 420px;
+  }
+}
